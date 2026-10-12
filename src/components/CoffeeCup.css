@@ -1,0 +1,112 @@
+.cc-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+/* ---------- Uap ---------- */
+.cc-uap {
+  display: flex;
+  gap: 14px;
+  height: 60px;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.cc-uap.tampil { opacity: 1; }
+.cc-uap span {
+  width: 8px;
+  height: 42px;
+  background: #d8cfc4;
+  border-radius: 8px;
+  filter: blur(3px);
+  animation: cc-naik 2.2s ease-in-out infinite;
+}
+.cc-uap span:nth-child(2) { animation-delay: 0.5s; height: 50px; }
+.cc-uap span:nth-child(3) { animation-delay: 1s; }
+@keyframes cc-naik {
+  0%   { transform: translateY(12px) scaleY(0.6); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(-22px) scaleY(1); opacity: 0; }
+}
+
+/* ---------- Cangkir ---------- */
+.cc-cangkir {
+  position: relative;          /* tidak overflow:hidden, supaya gagang terlihat */
+}
+.cc-badan {
+  position: relative;
+  width: 150px;
+  height: 160px;
+  background: #fffdf9;
+  border: 5px solid #2f2a25;
+  border-top: none;
+  border-radius: 0 0 48px 48px;
+  overflow: hidden;            /* kopi tetap di dalam badan cangkir */
+}
+.cc-gagang {
+  position: absolute;
+  right: -36px;
+  top: 28px;
+  width: 36px;
+  height: 56px;
+  border: 5px solid #2f2a25;
+  border-left: none;
+  border-radius: 0 24px 24px 0;
+}
+
+/* ---------- Isi kopi ---------- */
+.cc-isi {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(#9b6038, #4f2c19);
+  transition: height 0.9s cubic-bezier(0.34, 1.56, 0.64, 1); /* efek memantul */
+}
+.cc-ombak {
+  position: absolute;
+  top: -9px;
+  left: -50%;
+  width: 200%;
+  height: 18px;
+  background: #c4946a;
+  border-radius: 40%;
+  animation: cc-ombak 3s linear infinite;
+}
+@keyframes cc-ombak { to { transform: translateX(25%); } }
+
+.cc-takar {
+  position: absolute;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  background: rgba(47, 42, 37, 0.25);
+}
+
+.cc-piring {
+  width: 210px;
+  height: 14px;
+  background: #2f2a25;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.cc-cangkir.goyang { animation: cc-goyang 0.6s ease 1; }
+@keyframes cc-goyang {
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.cc-persen {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 14px 0 0;
+}
+.cc-pesan {
+  color: #8a7f72;
+  margin: 4px 0 0;
+  text-align: center;
+}

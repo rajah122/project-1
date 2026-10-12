@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap");
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.fk-wrap {
+  --kertas: #fbf6ee;
+  --tinta: #2f2a25;
+  --pudar: #8a7f72;
+  --garis: #e2d6c3;
+  --aksen: #b8693d;
+  --aksen-muda: #f4dfd0;
+  --hijau: #5f8a65;
+  --merah: #b6412f;
+
+  min-height: 100vh;
+  padding: 48px 16px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  color: var(--tinta);
+  background:
+    radial-gradient(circle at 10% 10%, #f3d6bf 0, transparent 35%),
+    radial-gradient(circle at 90% 85%, #dccbb3 0, transparent 40%),
+    #efe4d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fk-layout {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: center;
+}
+
+.fk-card {
+  background: var(--kertas);
+  border-radius: 22px;
+  padding: 40px 36px;
+  box-shadow: 0 24px 48px -24px rgba(80, 50, 20, 0.35);
+}
+
+.fk-eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aksen);
+  font-weight: 600;
+}
+.fk-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 40px;
+  line-height: 1.1;
+  margin: 6px 0 8px;
+}
+.fk-desc { margin: 0 0 28px; color: var(--pudar); }
+
+.fk-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+.fk-label { font-weight: 600; font-size: 14px; }
+
+.fk-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1.5px solid var(--garis);
+  border-radius: 14px;
+  padding: 0 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fk-input:focus-within {
+  border-color: var(--aksen);
+  box-shadow: 0 0 0 4px var(--aksen-muda);
+}
+.fk-input.ok { border-color: var(--hijau); }
+.fk-input.salah { border-color: var(--merah); }
+
+.fk-input input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  padding: 14px 0;
+}
+.fk-icon { font-size: 18px; }
+
+.fk-lihat {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+}
+
+.fk-centang {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hijau);
+  color: #fff;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fk-centang.tampil { transform: scale(1); }
+
+.fk-hint { color: var(--pudar); font-size: 12px; }
+.fk-err { color: var(--merah); font-size: 12px; }
+
+.fk-btn {
+  width: 100%;
+  margin-top: 8px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  background: var(--aksen);
+  border: 0;
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #8a4a26;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.3s;
+}
+.fk-btn:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 2px 0 #8a4a26; }
+.fk-btn:disabled {
+  background: #cbbfae;
+  box-shadow: 0 6px 0 #b3a692;
+  cursor: not-allowed;
+}
+
+.fk-hasil { text-align: center; animation: fk-muncul 0.4s ease; }
+@keyframes fk-muncul { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 760px) {
+  .fk-layout { grid-template-columns: 1fr; gap: 8px; }
+  .fk-samping { order: -1; transform: scale(0.75); margin: -30px 0; }
+  .fk-card { padding: 32px 20px; }
+  .fk-title { font-size: 32px; }
+}
